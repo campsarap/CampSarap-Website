@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAMP SARAP</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 15px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #111111;
+  color: #f8f0df;
+}
+
+/* HEADER AND LOGO */
+header {
+  background: #171717;
+  padding: 12px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #a88b4a;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: #d6b66d;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-left: auto;
+  order: 2;
+  transition: text-shadow 0.3s ease;
+}
+
+.logo:hover {
+  text-shadow: 0 0 12px #d6b66d;
+}
+
+.logo img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffdfce;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  order: 1;
+}
+
+nav a {
+  color: #f8f0df;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  padding: 7px 0;
+  transition: color 0.3s ease,
+              transform 0.3s ease,
+              text-shadow 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus,
+nav a:active {
+  color: #d6b66d;
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px #d6b66d80;
+}
+
+/* HERO */
+.hero {
+  min-height: 390px;
+  padding: 80px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background:
+    linear-gradient(#0009, #0009),
+    url("")
+    center/cover no-repeat;
+}
+
+.hero p {
+  color: #d6b66d;
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 7vw, 68px);
+  margin-bottom: 18px;
+}
+
+.hero h1 span {
+  color: #d6b66d;
+}
+
+.hero .intro {
+  max-width: 500px;
+  line-height: 1.7;
+  color: #eee4d2;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 28px;
+  background: #c5a45e;
+  color: #111;
+  padding: 14px 28px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 3px;
+  transition: transform 0.3s ease,
+              background 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.button:hover,
+.button:active {
+  background: #f0d594;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 22px #d6b66d55;
+}
+
+/* MENU */
+.menu-section {
+  padding: 65px 7%;
+  text-align: center;
+}
+
+.section-label {
+  color: #c5a45e;
+  letter-spacing: 4px;
+  font-size: 12px;
+}
+
+.menu-section h2 {
+  font-family: Georgia, serif;
+  font-size: 38px;
+  margin: 15px 0;
+}
+
+.subtitle {
+  color: #bdb6a9;
+  margin-bottom: 38px;
+  line-height: 1.6;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: left;
+}
+
+.food-card {
+  background: #1b1b1b;
+  border: 1px solid #51452d;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-8px);
+  border-color: #d6b66d;
+  box-shadow: 0 12px 28px #d6b66d20;
+}
+
+.food-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.food-card:hover img {
+  transform: scale(1.04);
+}
+
+.food-info {
+  padding: 22px;
+}
+
+.food-info h3 {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.food-info p {
+  color: #bdb6a9;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 45px;
+}
+
+.price {
+  display: block;
+  color: #d6b66d;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 18px;
+}
+
+/* ABOUT */
+.about {
+  padding: 55px 8%;
+  background: #eae0cc;
+  color: #191714;
+  text-align: center;
+}
+
+.about h2 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  margin: 14px 0;
+}
+
+.about p {
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+/* CONTACT */
+.contact {
+  padding: 55px 20px;
+  text-align: center;
+}
+
+.contact h2 {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  margin: 15px 0;
+}
+
+.contact p {
+  color: #c5bdae;
+  line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+  padding: 22px;
+  text-align: center;
+  background: #080808;
+  border-top: 1px solid #51452d;
+  color: #a9a194;
+  font-size: 13px;
+}
+
+/* SECTION REVEAL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s ease,
+              transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* TABLET */
+@media (max-width: 800px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* MOBILE */
+@media (max-width: 520px) {
+  header {
+    padding: 10px 4%;
+    gap: 10px;
+  }
+
+  .logo {
+    font-size: 14px;
+    letter-spacing: 1px;
+    gap: 5px;
+  }
+
+  .logo img {
+    width: 32px;
+    height: 32px;
+  }
+
+  nav {
+    gap: 9px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 330px;
+    padding: 55px 18px;
+  }
+
+  .menu-section {
+    padding: 45px 6%;
+  }
+
+  .menu-section h2 {
+    font-size: 32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <a href="#home" class="logo">
+    <span>CAMP SARAP</span>
+    <img
+      src="https://i.ibb.co/7tprWzBY/1792234465051.jpg"
+      alt="CampSarap Logo"
+    >
+  </a>
+</header>
+
+<section class="hero" id="home">
+  <p>WELCOME TO OUR MINI SHOP</p>
+  <h1>PROMISE UUWI KANG, <span>NAKA NGITI.</span></h1>
+  <div class="intro">
+    Discover delicious food, freshly prepared and served
+    with love. Your next favorite meryenda starts here.
+  </div>
+  <a href="#menu" class="button">EXPLORE OUR MENU</a>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="section-label">MADE WITH LOVE</div>
+  <h2>Our Menu</h2>
+  <p class="subtitle">
+    Explore our favorites and find something delicious.
+  </p>
+
+  <div class="menu-grid">
+
+    <div class="food-card">
+      <img src="https://i.ibb.co/WWF3FddT/Messenger-creation-B24-D6-C8-B-E175-44-E6-8-A70-7-F9186079670.jpg"
+           alt="Grilled Burger">
+      <div class="food-info">
+        <h3>Grilled Burger</h3>
+        <p>Grilled burger with fresh toppings and a soft bun.</p>
+        <span class="price">₱35.00</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <img src="https://i.ibb.co/Y4tQpMZp/file-000000007058820793078da9a5dce649.png"
+           alt="Milk Tea">
+      <div class="food-info">
+        <h3>Milk Tea</h3>
+        <p>A refreshing creamy drink for every occasion.</p>
+        <span class="price">₱35.00</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <img src="https://i.ibb.co/bgfh1rNY/Messenger-creation-77553-A20-F882-4906-8-A50-05-F8397-A2-CFA.jpg"
+           alt="French Fries">
+      <div class="food-info">
+        <h3>FRIES</h3>
+        <p>Crispy golden fries, perfect for sharing.</p>
+        <span class="price">₱30.00</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <img src="https://i.ibb.co/Qv9kFDX2/1792236206303.jpg"
+           alt="Grilled Corn">
+      <div class="food-info">
+        <h3>Grilled Corn</h3>
+        <p>Delicious grilled corn, freshly prepared.</p>
+        <span class="price">₱20.00</span>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <img src="https://i.ibb.co/7dyvXndk/Messenger-creation-6-E848878-5-BFE-4-F4-A-8-C30-0-A8-E08-F9874-B.jpg"
+           alt="Hotdog Sandwich">
+      <div class="food-info">
+        <h3>Hotdog Sandwich</h3>
+        <p>Yummy Hotdog Sandwich with soft bun.</p>
+        <span class="price">₱50.00</span>
+      </div>
+      
+    </div>
+    <div class="food-card">
+      <img src="https://i.ibb.co/hF9YrGMS/Messenger-creation-34-B6-B668-9372-4400-8-C96-05-CD8-E87-F375.jpg"
+           alt="Soda">
+      <div class="food-info">
+        <h3>Soda</h3>
+        <p>Choose your favorite flavours cold and fresh.</p>
+        <span class="price">₱20.00</span>
+      </div>
+    </div>
+
+
+    <div class="food-card">
+      <img src="https://i.ibb.co/8gX1yxfr/Messenger-creation-9-AB557-CA-BD9-A-478-B-A2-E9-B6-B2-A614310-F.jpg"
+           alt="Dynamite">
+      <div class="food-info">
+        <h3>Dynamite</h3>
+        <p>spicy and yummy.</p>
+        <span class="price">₱15.00</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-label">OUR STORY</div>
+  <h2>About Us</h2>
+  <p>
+    Welcome to CampSarap! We believe that great food
+    brings people together. Our goal is to serve delicious
+    favorites and make every visit special.
+  </p>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-label">GET IN TOUCH</div>
+  <h2>Contact Us</h2>
+  <p>Have questions or want to order?</p>
+  <p>Facebook: Camp Sarap</p>
+  <p>Phone: Your Contact Number</p>
+  <p>Location: Glorimor Vill, Malainen Luma, Naic, Cavite</p>
+</section>
+
+<footer>
+  © 2026 CAMP SARAP. All rights reserved.
+</footer>
+
+<script>
+/* REVEAL SECTIONS WHEN THEY ENTER THE SCREEN */
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll(
+    ".hero, .menu-section, .about, .contact"
+  );
+
+  /* Make sure the website still works if animations are unsupported */
+  if (!("IntersectionObserver" in window)) {
+    sections.forEach(function (section) {
+      section.classList.add("visible");
+    });
+    return;
+  }
+
+  sections.forEach(function (section) {
+    section.classList.add("reveal");
+  });
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  sections.forEach(function (section) {
+    observer.observe(section);
+  });
+});
+</script>
+
+</body>
+</html>
